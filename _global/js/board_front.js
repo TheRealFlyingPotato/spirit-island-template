@@ -197,6 +197,24 @@ function parseGrowthTags(){
                     newGrowthCellHTML += `${openTag}` + presenceReqOpen + "+{presence}{" + presenceReq + "}{range-" + presenceRange + "}" + presenceReqClose + "<growth-text>Add a Presence</growth-text></growth-cell>"
                     break;
                 }
+                case 'add-token': {
+                  const matches = regExp.exec(classPieces[j]);
+
+                  let presenceOptions = matches[1].split(",");
+                  let presenceRange = presenceOptions[0];
+                  let presenceReqOpen = "<custom-presence>";
+                  let presenceReqClose = "</custom-presence>";
+                  let presenceReq = "none";
+
+                  if (presenceOptions.length > 2) {
+                      presenceReqOpen = "<custom-presence-req>";
+                      presenceReqClose = "</custom-presence-req>";
+                      presenceReq = presenceOptions[2];
+                  }
+
+                  newGrowthCellHTML += `${openTag}` + presenceReqOpen + "+{" + presenceOptions[1] + "}{" + presenceReq + "}{range-" + presenceRange + "}" + presenceReqClose + "<growth-text>Add a " + presenceOptions[1] + "</growth-text></growth-cell>"
+                  break;
+              }
                 case 'push':
                     {
                         const matches = regExp.exec(classPieces[j]);
