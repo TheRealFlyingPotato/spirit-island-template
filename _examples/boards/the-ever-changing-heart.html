@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+
+<head>
+    <link href="../../_global/css/global.css" rel="stylesheet" />
+    <link href="../../_global/css/board_front.css" rel="stylesheet" />
+    <link href="the-ever-changing-heart.css" rel="stylesheet"/>
+    <script type="text/javascript" src="../../_global/js/general.js"></script>
+    <script type="text/javascript" src="../../_global/js/board_front.js"></script>
+</head>
+
+<body>
+
+  <board spirit-image="the-ever-changing-heart.png" spirit-image-scale="100%"  spirit-border="example2.png">
+    
+    <spirit-name>
+      The Island's Ever Changing Heart
+    </spirit-name>
+
+    <special-rules-container>
+      <section-title>SPECIAL RULES</section-title>
+      <special-rules-subtitle>Blending In</special-rules-subtitle>
+      <special-rule>
+        Whenever you replace {presence} with {disease} / {beast} / {wilds} / {badlands} , set it here. {presence} here is treated as though it were on the island for checking loss conditions.
+      </special-rule>
+      <special-rule>
+        <b>During Time Passes:</b> Replace 1 or more of {disease} / {beast} / {wilds} / {badlands} in or adjacent to one of your lands with {presence} from here. If you have no presence on the island, you may treat all lands as yours for the first use of this replacement each turn. If this replacement is not done, ignore presence here for checking game loss conditions until the next Time Passes step.
+      </special-rule>
+      <special-rules-subtitle>STRONGHOLD</special-rules-subtitle>
+      <special-rule>
+        Your {presence} in lands with {disease} / {beast} / {wilds} / {badlands} count as {sacred-site}.
+      </special-rule>
+    </special-rules-container>
+
+    <right>
+
+      <growth title="Growth">
+      <sub-growth title="pick one" bordered>
+        <growth-group values="gain-power-card;gain-energy(1)"></growth-group>
+        <growth-group values="add-presence(1);gain-card-play"></growth-group>
+        <growth-group values="add-presence(1);gain-energy(1)"></growth-group>
+        <growth-group cost="2" values="reclaim-all;add-token(0,wilds)"></growth-group>
+      </sub-growth>
+    </growth>
+
+    <presence-tracks>
+      <energy-track values="0,1,1,move-presence(1),2,2,any,3"></energy-track>
+      <card-play-track values="1,2,push(wilds),3,reclaim-one,4"></card-play-track>
+    </presence-tracks>
+
+    <innate-powers>
+      <quick-innate-power
+        name="ya'll need to blend in"
+        speed="fast"
+        range="1"
+        target="any"
+        target-title="TARGET LAND"
+        note="">
+        <level threshold="2-moon">
+          Replace up to 1 {presence} from each spirit with {disease} / {beast} / {wilds} / {badlands} .
+        </level>
+        <level threshold="1-plant">
+          Push 1 {disease} / {beast} / {wilds} / {badlands} per {plant} you have.
+        </level>
+        <level threshold="4-moon">
+          Repeat this Power.
+        </level>
+      </quick-innate-power> 
+      <quick-innate-power
+      name="shift and spook"
+      speed="fast"
+      range="1"
+      note="Whenever this power replaces a token, gain 1 {fear}"
+      target="ANY"
+      target-title="TARGET LAND">
+        <level threshold="2-plant">
+          Replace 1 {disease} / {beast} / {badlands} with {wilds}.
+        </level>
+        <level threshold="2-water">
+          Replace 1 {beast} / {wilds} / {badlands} with {disease}.
+        </level>
+        <level threshold="2-earth">
+          Replace 1 {disease} / {beast} / {wilds} with {badlands}.
+        </level>
+        <level threshold="2-animal">
+          Replace 1 {disease} / {wilds} / {badlands} with {beast}.
+        </level>
+        <level threshold="3-moon">
+          Repeat this Power.
+        </level>
+      </quick-innate-power>
+    </innate-powers>
+  </right>
+  </board>
+</body>
+
+</html>
